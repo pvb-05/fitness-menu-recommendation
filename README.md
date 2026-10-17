@@ -185,9 +185,3 @@ Tác giả: Bac Phan
 Email: phanvanbac15112005@gmail.com
 
 Nếu bạn muốn đóng góp hoặc cải thiện dự án, hãy liên hệ qua email trên để trao đổi và hợp tác.
-
----
-
-## 11. Kết luận
-
-Fitness Menu Recommendation là một dự án phù hợp cho mục tiêu học tập và nghiên cứu về trí tuệ nhân tạo ứng dụng trong lĩnh vực dinh dưỡng và sức khỏe. Dự án không chỉ giúp người dùng lựa chọn thực đơn phù hợp mà còn thể hiện cách kết hợp dữ liệu, mô hình học máy và ứng dụng web để tạo ra một sản phẩm thực tiễn.
