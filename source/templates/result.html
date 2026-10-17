@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Thực Đơn Hoàn Chỉnh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 min-h-screen p-6 font-sans antialiased text-gray-800">
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+      <div class="bg-green-600 p-6 text-center text-white">
+        <h1 class="text-3xl font-extrabold mb-2">THỰC ĐƠN NGÀY HÔM NAY</h1>
+      </div>
+
+      <div class="p-8">
+        <!-- Hiển thị các bữa ăn đã chọn -->
+        <div class="space-y-6 mb-8">
+          {% for meal_time in ['Sáng', 'Trưa', 'Tối'] %} {% if meal_time in selected_meals %} {% set menu =
+          selected_meals[meal_time] %}
+          <div class="flex items-center bg-gray-50 border border-gray-200 p-4 rounded-lg">
+            <div class="w-24 text-center border-r border-gray-300 pr-4 mr-4">
+              <span class="block text-lg font-bold text-green-700 whitespace-nowrap">Bữa {{ meal_time }}</span>
+              <span class="text-xs text-gray-500">{{ menu.Total_Calories | round(0) }} kcal</span>
+            </div>
+            <div class="flex-1 text-sm text-gray-700">
+              <p><b>Tinh bột:</b> {{ menu.Tinh_Bot }}</p>
+              <p><b>Đạm:</b> {{ menu.Dam }}</p>
+              <p><b>Rau xanh:</b> {{ menu.Rau }}</p>
+            </div>
+          </div>
+          {% else %}
+          <div class="flex items-center bg-red-50 border border-red-200 p-4 rounded-lg opacity-60">
+            <span class="block text-lg font-bold text-red-700 w-24 text-center border-r border-red-300 pr-4 mr-4"
+              >Bữa {{ meal_time }}</span
+            >
+            <p class="text-sm text-red-600 italic">Bạn chưa chọn thực đơn cho bữa này.</p>
+          </div>
+          {% endif %} {% endfor %}
+        </div>
+
+        <!-- Đối chiếu tổng thể -->
+        <h3 class="text-xl font-bold text-gray-800 border-b pb-2 mb-4">Đối Chiếu Dinh Dưỡng Toàn Ngày</h3>
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-gray-100 text-gray-600 text-sm uppercase tracking-wider">
+              <th class="p-3 border-b">Chỉ số</th>
+              <th class="p-3 border-b">Mục tiêu cơ thể (TDEE)</th>
+              <th class="p-3 border-b">Tổng thực đơn đã chọn</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-3 border-b font-bold text-gray-800">Calories</td>
+              <td class="p-3 border-b">{{ day_target.calo | round(0) }} kcal</td>
+              <td class="p-3 border-b font-bold text-green-600">{{ day_total.calo | round(0) }} kcal</td>
+            </tr>
+            <tr>
+              <td class="p-3 border-b font-bold text-gray-800">Protein</td>
+              <td class="p-3 border-b">{{ day_target.pro | round(1) }} g</td>
+              <td class="p-3 border-b font-bold text-red-500">{{ day_total.pro | round(1) }} g</td>
+            </tr>
+            <tr>
+              <td class="p-3 border-b font-bold text-gray-800">Carbs (Tinh bột)</td>
+              <td class="p-3 border-b">{{ day_target.carb | round(1) }} g</td>
+              <td class="p-3 border-b font-bold text-blue-500">{{ day_total.carb | round(1) }} g</td>
+            </tr>
+            <tr>
+              <td class="p-3 border-b font-bold text-gray-800">Fat (Chất béo)</td>
+              <td class="p-3 border-b">{{ day_target.fat | round(1) }} g</td>
+              <td class="p-3 border-b font-bold text-yellow-600">{{ day_total.fat | round(1) }} g</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="mt-8 text-center">
+          <a href="/" class="text-blue-600 hover:text-blue-800 font-semibold underline"
+            >&larr; Quay lại trang chủ để tạo kế hoạch mới</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
